@@ -53,13 +53,9 @@ public class MyNotificationService extends IntentService {
 
         Notification.Builder builder = new Notification.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
-//                .setAutoCancel(true)
                 .setContentTitle("Notification")
                 .setContentIntent(pIntent)
-//                .setContent(remoteViews)
                 .setContentText(message);
-
-//        remoteViews.setTextViewText(R.id.title, str_title);
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(id++, builder.build());
