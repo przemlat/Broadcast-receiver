@@ -11,6 +11,6 @@ public class MyBroadcastReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         String message = intent.getStringExtra("message");
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-        Notify.startActionNotify(context, message);
+        MyNotificationService.startActionNotify(context, message);
     }
 }

@@ -4,30 +4,30 @@ import android.app.IntentService;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Intent;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.widget.RemoteViews;
 
-public class Notify extends IntentService {
+public class MyNotificationService extends IntentService {
     private static final String ACTION_NOTIFY = "com.example.patryko.last_receiver.action.NOTIFY";
 
     private static final String EXTRA_MESSAGE = "com.example.patryko.last_receiver.extra.MESSAGE";
 
     private int id = 0;
 
-    public Notify() {
-        super("Notify");
+    public MyNotificationService() {
+        super("MyNotificationService");
     }
-    public static void startActionNotify(Context context, String message){
 
-        Intent intent = new Intent(context, Notify.class);
+    public static void startActionNotify(Context context, String message) {
+
+        Intent intent = new Intent(context, MyNotificationService.class);
         intent.setAction(ACTION_NOTIFY);
         intent.putExtra(EXTRA_MESSAGE, message);
         context.startService(intent);
 
     }
-
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
@@ -41,13 +41,10 @@ public class Notify extends IntentService {
         }
     }
 
-    private void handleActionNotify(String message){
-        RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.mojanotyfikacja);
-
+    private void handleActionNotify(String message) {
+        RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.my_notification);
 
         String str_title = message;
-
-
 
         Intent intent = new Intent(this, MyNotification.class);
         intent.putExtra("title", str_title);
@@ -56,15 +53,16 @@ public class Notify extends IntentService {
 
         Notification.Builder builder = new Notification.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
-                .setAutoCancel(true)
+//                .setAutoCancel(true)
+                .setContentTitle("Notification")
                 .setContentIntent(pIntent)
-                .setContent(remoteViews);
+//                .setContent(remoteViews)
+                .setContentText(message);
 
-        remoteViews.setTextViewText(R.id.title, str_title);
+//        remoteViews.setTextViewText(R.id.title, str_title);
 
-
-        NotificationManager notman = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notman.notify(id++, builder.build());
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(id++, builder.build());
 
     }
 }

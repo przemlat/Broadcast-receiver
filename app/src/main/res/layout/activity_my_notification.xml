@@ -11,14 +11,11 @@
         android:id="@+id/activity_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="176dp"
         android:text="TextView"
         tools:layout_editor_absoluteX="115dp"
-        tools:layout_editor_absoluteY="62dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="137dp"
-        android:layout_marginStart="137dp"
-        android:layout_marginTop="178dp" />
+        tools:layout_editor_absoluteY="62dp" />
 
 </RelativeLayout>

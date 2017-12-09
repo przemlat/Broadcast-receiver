@@ -13,8 +13,8 @@ public class MyNotification extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_notification);
 
-        NotificationManager notman = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notman.cancel(0);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.cancel(0);
 
         Intent i = getIntent();
         String title = i.getStringExtra("title");
